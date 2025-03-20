@@ -1,6 +1,6 @@
 # My Awesome Notes
 
-> Finally here
+Finally here
 
 ## What is it
 
