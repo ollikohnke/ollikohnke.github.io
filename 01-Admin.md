@@ -2,7 +2,7 @@
 
 ## Users
 
-### Creating Users
+#### Creating Users
 
 *   **`useradd`:** The primary command for creating new user accounts.
     *   `useradd username`: Creates a basic user account.
@@ -15,7 +15,7 @@
 *   **`adduser`:** A more user-friendly interactive utility for creating users. It prompts for information like the user's full name and password.
     * `adduser username`: Creates a user and prompts for information.
 
-### Modifying Users
+#### Modifying Users
 
 *   **`usermod`:** Used to modify existing user accounts.
     *   `usermod -a -G groupname username`: Adds a user to a supplementary group without removing them from other groups.
@@ -34,7 +34,7 @@
     * `chage -M days username`: Sets the maximum number of days a password is valid.
     * `chage -W days username`: Sets the number of days before password expiry that the user is warned.
 
-### Deleting Users
+#### Deleting Users
 
 *   **`userdel`:** Deletes user accounts.
     *   `userdel username`: Deletes the user account.
