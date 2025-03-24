@@ -17,3 +17,4 @@ lxc alias add login 'exec @ARGS@ --mode interactive -- bash -xc {exec,login,-p,-
 lxc login container
 # User login
 lxc login container --env USER=ubuntu
+```
