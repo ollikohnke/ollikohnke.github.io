@@ -9,6 +9,8 @@ lxd init
 
 lxdbr0 = 10.0.0.1/24
 
+### https://documentation.ubuntu.com/lxd/en/stable-4.0/networks/
+ 
 resolvectl dns lxdbr0 n.n.n.n # replace n.n.n.n with nameserver
 resolvectl domain lxdbr0 '~lxd'
 
