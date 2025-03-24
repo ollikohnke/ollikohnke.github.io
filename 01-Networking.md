@@ -79,6 +79,14 @@
 
 ## Firewall Configuration (using UFW)
 
+### Loopback
+```
+sudo ufw allow in on lo
+sudo ufw allow out on lo
+sudo ufw deny in from 127.0.0.0/8
+sudo ufw deny in from ::1
+```
+
 * **Viewing Firewall Status:**
     * `sudo ufw status`: Shows the firewall status (active or inactive).
     * `sudo ufw status numbered`: Shows the firewall rules with numbers.
