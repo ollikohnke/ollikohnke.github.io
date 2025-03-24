@@ -18,8 +18,8 @@
 - Proxmox
     - [Setup](03-Setup.md)
 
-- LXC
-    - [Incus](04-Incus.md)
+- LXD
+    - [LXD](04-LXD.md)
     - [Containers](04-Containers.md)
     - [Networks](04-Networks.md)
 
