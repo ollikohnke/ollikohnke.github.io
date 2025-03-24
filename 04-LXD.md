@@ -9,6 +9,9 @@ lxd init
 
 lxdbr0 = 10.0.0.1/24
 
+resolvectl dns lxdbr0 n.n.n.n # replace n.n.n.n with nameserver
+resolvectl domain lxdbr0 '~lxd'
+
 lxc config set core.https_address :8443
 
 lxc alias add login 'exec @ARGS@ --mode interactive -- bash -xc {exec,login,-p,-f,$USER}'
