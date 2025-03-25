@@ -18,6 +18,21 @@ lxc network set dns.domain=lxd
 resolvectl dns lxdbr0 1.1.1.1 # replace n.n.n.n with nameserver
 resolvectl domain lxdbr0 '~lxd'
 
+[Unit]
+Description=LXD per-link DNS configuration for lxdbr0
+BindsTo=sys-subsystem-net-devices-lxdbr0.device
+After=sys-subsystem-net-devices-lxdbr0.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/resolvectl dns lxdbr0 1.1.1.1
+ExecStart=/usr/bin/resolvectl domain lxdbr0 '~lxd'
+ExecStopPost=/usr/bin/resolvectl revert lxdbr0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sys-subsystem-net-devices-lxdbr0.device
+
 lxc config set core.https_address :8443
 
 lxc alias add login 'exec @ARGS@ --mode interactive -- bash -xc {exec,login,-p,-f,$USER}'
