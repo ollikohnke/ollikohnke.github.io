@@ -1,5 +1,5 @@
 # Linux Administration
-
+[bashrc](https://i.sstatic.net/3V6qs.png)
 ## Users
 
     ### Creating Users
