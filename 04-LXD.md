@@ -17,7 +17,9 @@ lxc network set dns.domain=lxd
 # Integrate with host systemd-resolved
 resolvectl dns lxdbr0 1.1.1.1 # replace n.n.n.n with nameserver
 resolvectl domain lxdbr0 '~lxd'
-
+```
+```
+# /etc/systemd/system/lxd-dns-lxdbr0.service
 [Unit]
 Description=LXD per-link DNS configuration for lxdbr0
 BindsTo=sys-subsystem-net-devices-lxdbr0.device
@@ -32,7 +34,8 @@ RemainAfterExit=yes
 
 [Install]
 WantedBy=sys-subsystem-net-devices-lxdbr0.device
-
+```
+```
 lxc config set core.https_address :8443
 
 lxc alias add login 'exec @ARGS@ --mode interactive -- bash -xc {exec,login,-p,-f,$USER}'
