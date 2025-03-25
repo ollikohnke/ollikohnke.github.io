@@ -11,10 +11,10 @@ lxdbr0 = 10.0.0.1/24
 
 ### https://documentation.ubuntu.com/lxd/en/stable-4.0/networks/
 
-# Set DNS domain for network
+# Set DNS domain for dnsmasq to resolve container to container domains
 lxc network set dns.domain=lxd
 
-
+# Integrate with host systemd-resolved
 resolvectl dns lxdbr0 1.1.1.1 # replace n.n.n.n with nameserver
 resolvectl domain lxdbr0 '~lxd'
 
