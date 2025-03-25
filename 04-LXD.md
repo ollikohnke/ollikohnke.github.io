@@ -15,7 +15,7 @@ lxdbr0 = 10.0.0.1/24
 lxc network set dns.domain=lxd
 
 # Integrate with host systemd-resolved
-resolvectl dns lxdbr0 1.1.1.1 # replace n.n.n.n with nameserver
+resolvectl dns lxdbr0 1.1.1.1 # replace n.n.n.n with nameserver (10.0.0.1)
 resolvectl domain lxdbr0 '~lxd'
 ```
 ```
@@ -27,7 +27,7 @@ After=sys-subsystem-net-devices-lxdbr0.device
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/resolvectl dns lxdbr0 1.1.1.1
+ExecStart=/usr/bin/resolvectl dns lxdbr0 10.0.0.1
 ExecStart=/usr/bin/resolvectl domain lxdbr0 '~lxd'
 ExecStopPost=/usr/bin/resolvectl revert lxdbr0
 RemainAfterExit=yes
