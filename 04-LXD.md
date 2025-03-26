@@ -6,7 +6,6 @@
 sudo groupmod -aG lxd opako
 
 lxd init
-
 lxdbr0 = 10.0.0.1/24
 
 ### https://documentation.ubuntu.com/lxd/en/stable-4.0/networks/
@@ -14,35 +13,12 @@ lxdbr0 = 10.0.0.1/24
 # Set DNS domain for dnsmasq to resolve container to container domains
 lxc network set dns.domain=lxd
 
-# Integrate with host systemd-resolved
-resolvectl dns lxdbr0 1.1.1.1 # replace n.n.n.n with nameserver (10.0.0.1)
-resolvectl domain lxdbr0 '~lxd'
-```
-```
-# /etc/systemd/system/lxd-dns-lxdbr0.service
-[Unit]
-Description=LXD per-link DNS configuration for lxdbr0
-BindsTo=sys-subsystem-net-devices-lxdbr0.device
-After=sys-subsystem-net-devices-lxdbr0.device
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/resolvectl dns lxdbr0 10.0.0.1
-ExecStart=/usr/bin/resolvectl domain lxdbr0 '~lxd'
-ExecStopPost=/usr/bin/resolvectl revert lxdbr0
-RemainAfterExit=yes
-
-[Install]
-WantedBy=sys-subsystem-net-devices-lxdbr0.device
-```
-```
 lxc config set core.https_address :8443
 
 lxc alias add login 'exec @ARGS@ --mode interactive -- bash -xc {exec,login,-p,-f,$USER}'
 
 # /dev/sdb (30gt) btrfs used by LXD
 /dev/disk/by-uuid/88160716-6950-4589-8f97-fe6439e61640 /media/opako/btrfs btrfs rw,nosuid,nodev,relatime,ssd,discard=async,space_cache=v2,user_s 0 2
-
 
 # Root login
 lxc login container
