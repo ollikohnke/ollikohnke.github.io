@@ -25,21 +25,21 @@ lxc login container
 # User login
 lxc login container --env USER=ubuntu
 ```
-## Configure dnsmasq to announce custom DNS server to containers
+### Configure dnsmasq to announce custom DNS server to containers
 ```
 lxc network edit lxdbr0
 config:
     raw.dnsmasq: dhcp-option=6,10.0.0.53
 ```
-## Configure dhcp4 IP ranges
+### Configure dhcp4 IP ranges
 ```
 lxc network set lxdbr0 ipv4.dhcp.ranges <start_ip>-<end_ip>
 ```
-## Configure proxy device for network forwarding
+### Configure proxy device for network forwarding
 ```
 lxc config device add wireguard fwd-49312-udp proxy listen=udp:0.0.0.0:49312 connect=udp:127.0.0.1:49312
 ```
-## Set staic IP for container using systemd-network
+### Set static IP for container using systemd-network
 ```
 # /etc/systemd/network/50-config.network
 [Match]
@@ -48,6 +48,11 @@ Name=eth0
 [Network]
 Address=10.0.0.53/24
 Gateway=10.0.0.1
+```
+
+## Networking
+How to route two bridges
+```
 ```
 ## Useful LXD commands
 Summarized from https://stgraber.org/2016/03/19/lxd-2-0-your-first-lxd-container-312/. 
