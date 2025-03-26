@@ -37,7 +37,7 @@ lxc network set lxdbr0 ipv4.dhcp.ranges <start_ip>-<end_ip>
 ```
 ## Configure proxy device for network forwarding
 ```
-lxc config device add mycontainer port49312-forward proxy listen=udp:49312 connect=udp:49312
+lxc config device add wireguard forward-49312-udp proxy listen=udp:0.0.0.0:49312 connect=udp:10.0.0.80:49312
 ```
 ## Set staic IP for container using systemd-network
 ```
