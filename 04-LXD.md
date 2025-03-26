@@ -25,6 +25,12 @@ lxc login container
 # User login
 lxc login container --env USER=ubuntu
 ```
+## Configure dnsmasq to announce custom DNS server to containers
+```
+lxc network edit lxdbr0
+config:
+    raw.dnsmasq: dhcp-option=6,10.0.0.53
+```
 ## Set staic IP for container using systemd-network
 ```
 # /etc/systemd/network/50-config.network
