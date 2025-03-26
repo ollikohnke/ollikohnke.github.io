@@ -25,7 +25,16 @@ lxc login container
 # User login
 lxc login container --env USER=ubuntu
 ```
+## Set staic IP for container using systemd-network
+```
+# /etc/systemd/network/50-config.network
+[Match]
+Name=eth0
 
+[Network]
+Address=10.0.0.53/24
+Gateway=10.0.0.1
+```
 ## Useful LXD commands
 Summarized from https://stgraber.org/2016/03/19/lxd-2-0-your-first-lxd-container-312/. 
 
