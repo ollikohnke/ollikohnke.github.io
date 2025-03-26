@@ -31,6 +31,14 @@ lxc network edit lxdbr0
 config:
     raw.dnsmasq: dhcp-option=6,10.0.0.53
 ```
+## Configure dhcp4 IP ranges
+```
+lxc network set lxdbr0 ipv4.dhcp.ranges <start_ip>-<end_ip>
+```
+## Configure proxy device for network forwarding
+```
+lxc config device add mycontainer port49312-forward proxy listen=tcp:49312 connect=tcp:49312
+```
 ## Set staic IP for container using systemd-network
 ```
 # /etc/systemd/network/50-config.network
