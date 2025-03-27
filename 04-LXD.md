@@ -18,7 +18,7 @@ lxc config set core.https_address :8443
 lxc alias add login 'exec @ARGS@ --mode interactive -- bash -xc {exec,login,-p,-f,$USER}'
 
 # /dev/sdb (30gt) btrfs used by LXD
-/dev/disk/by-uuid/0aaebe21-f2fe-4982-8975-7b83fd87ef60 /mnt/btrfs btrfs rw,nosuid,nodev,relatime,ssd,discard=async,space_cache=v2,user_s 0 2
+/dev/disk/by-uuid/0aaebe21-f2fe-4982-8975-7b83fd87ef60 /mnt/btrfs btrfs ro,nosuid,nodev,relatime,ssd,discard=async,space_cache=v2,user_s 0 2
 
 # Root login
 lxc login container
