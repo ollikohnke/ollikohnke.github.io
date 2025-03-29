@@ -1,7 +1,7 @@
 # LXD
 
-## Installing
 
+## Installing
 ```
 sudo groupmod -aG lxd opako
 
@@ -25,6 +25,8 @@ lxc login container
 # User login
 lxc login container --env USER=ubuntu
 ```
+
+## Configuration
 ### Configure dnsmasq to announce custom DNS server to containers
 ```
 lxc network edit lxdbr0
@@ -53,6 +55,12 @@ Gateway=10.0.0.1
 ## Networking
 How to route two bridges
 ```
+```
+
+## Backup using snap
+```
+sudo snap save lxd
+sudo snap export-snapshot <id> <location>
 ```
 ## Useful LXD commands
 Summarized from https://stgraber.org/2016/03/19/lxd-2-0-your-first-lxd-container-312/. 
