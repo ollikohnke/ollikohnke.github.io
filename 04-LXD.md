@@ -41,6 +41,11 @@ lxc network set lxdbr0 ipv4.dhcp.ranges <start_ip>-<end_ip>
 ```
 lxc config device add wireguard fwd-49312-udp proxy listen=udp:0.0.0.0:49312 connect=udp:127.0.0.1:49312
 ```
+## Set static IP for container from DHCP settings
+```
+lxc config override device set qbt eth0 ipv4.address=10.0.0.67
+```
+
 ### Set static IP for container using systemd-network
 ```
 # /etc/systemd/network/50-config.network
