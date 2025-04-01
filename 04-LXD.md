@@ -64,6 +64,9 @@ How to route two bridges
 
 ## Backup using snap
 ```
+# See all snapshots
+snap saved
+# Create backup and export
 sudo snap save lxd
 sudo snap export-snapshot <id> <location>
 ```
